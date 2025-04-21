@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
-import "./globals.css";
+import { Inter, Dela_Gothic_One } from "next/font/google";
+import "@/shared/styles/globals.css";
+import Navbar from "@/features/navbar";
+import { Providers } from "@/shared/components/providers";
 
-const rubik = Rubik({
+const inter = Inter({
   subsets: ["latin", "cyrillic"],
-  variable: "--rubik",
+  variable: "--font-inter",
+});
+
+const delaGothicOne = Dela_Gothic_One({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-dela-gothic-one",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -18,8 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${rubik.variable} ${rubik.className} antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${delaGothicOne.variable} ${inter.className} antialiased`}>
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
