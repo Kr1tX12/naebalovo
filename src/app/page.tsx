@@ -1,8 +1,5 @@
+import { Home } from "@/views/home";
 
-export default function Home() {
-  return (
-    <div> 
-      
-    </div>
-  )
+export default function HomePage() {
+  return <Home />;
 }

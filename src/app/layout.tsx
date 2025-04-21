@@ -3,6 +3,7 @@ import { Inter, Dela_Gothic_One } from "next/font/google";
 import "@/shared/styles/globals.css";
 import Navbar from "@/features/navbar";
 import { Providers } from "@/shared/components/providers";
+import { NAVBAR_HEIGHT } from "@/shared/constants/constants";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -27,10 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${delaGothicOne.variable} ${inter.className} antialiased`}>
+      <body
+        className={`${inter.variable} ${delaGothicOne.variable} ${inter.className} antialiased`}
+      >
         <Providers>
           <Navbar />
-          {children}
+          <main style={{ marginTop: NAVBAR_HEIGHT }}>{children}</main>
         </Providers>
       </body>
     </html>
