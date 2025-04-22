@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Dela_Gothic_One } from "next/font/google";
+import localFont from "next/font/local";
+import { Dela_Gothic_One } from "next/font/google";
 import "@/shared/styles/globals.css";
 import Navbar from "@/features/navbar";
 import { Providers } from "@/shared/components/providers";
 import { NAVBAR_HEIGHT } from "@/shared/constants/constants";
 
-const inter = Inter({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-inter",
+const kanit = localFont({
+  src: "../../public/fonts/kanit-cyrillic.ttf",
+  variable: "--font-kanit",
 });
 
 const delaGothicOne = Dela_Gothic_One({
@@ -29,11 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${delaGothicOne.variable} ${inter.className} antialiased`}
+        className={`${kanit.variable} ${delaGothicOne.variable} ${kanit.className} antialiased`}
       >
         <Providers>
           <Navbar />
-          <main style={{ marginTop: NAVBAR_HEIGHT }}>{children}</main>
+          <main>{children}</main>
         </Providers>
       </body>
     </html>
